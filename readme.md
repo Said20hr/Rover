@@ -1,0 +1,3 @@
+# Rover
+## Web App powered by Open IA for Academic research
+Welcome to the Open IA powered Academic Research Web App! This repository contains all the necessary files to build a powerful web application for academic research. Utilizing the cutting-edge capabilities of Open IA, this app is designed to provide researchers with the tools they need to conduct thorough and accurate research. Whether you're looking to gather, analyze, or visualize data, this app has you covered. Clone the repository and follow the instructions provided to get started with your own Open IA powered academic research web app today!
