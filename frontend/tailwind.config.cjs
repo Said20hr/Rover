@@ -6,6 +6,7 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./src/**/**/*.{vue,js,ts,jsx,tsx}",
   ],
   presets: [],
   darkMode: "class",
@@ -442,8 +443,8 @@ module.exports = {
       "2xl": ["1.5rem", { lineHeight: "2rem" }],
       "3xl": ["1.875rem", { lineHeight: "2.25rem" }],
       "4xl": ["2.25rem", { lineHeight: "2.5rem" }],
-      "5xl": ["3rem", { lineHeight: "1" }],
-      "6xl": ["3.75rem", { lineHeight: "1" }],
+      "5xl": ["3rem", { lineHeight: "3.5rem" }],
+      "6xl": ["3.75rem", { lineHeight: "4rem" }],
       "7xl": ["4.5rem", { lineHeight: "1" }],
       "8xl": ["5rem", { lineHeight: "1" }],
       "9xl": ["6rem", { lineHeight: "1" }],
@@ -1135,7 +1136,7 @@ module.exports = {
         },
 
         "p,h1, h2, h3, h4, h5, h6, a": {
-          color: "#344767",
+          color: "#292c44",
         },
         "h1, h2, h3, h4, h5, h6": {
           "margin-bottom": ".5rem",
