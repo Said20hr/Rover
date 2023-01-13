@@ -26,7 +26,7 @@
       </div>
       <div class="w-1/3">
         <div >
-          <input type="file" ref="fileInput" @change="handleFileUpload" />
+          <input type="file" ref="fileInput"  />
         </div>
       </div>
     </div>
@@ -34,17 +34,41 @@
 
   </section>
 </template>
-<script>
+<script  lang="ts">
 import { ref } from 'vue'
-import VueFileUpload from "vue-file-upload";
 
 export default {
-  data() {
-    return {
-      outputs: null
+  setup() {
+    const prompt = ref("")
+    const outputs = ref("")
+
+    async function generateText() {
+      const response = await fetch('https://api.openai.com/v1/engines/text-davinci-002/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer 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'
+        },
+        body: JSON.stringify({
+          prompt: prompt.value,
+          max_tokens: 100,
+          temperature: 0.5
+        })
+      })
+      const json = await response.json();
+      outputs.value = json.choices[0].text;
     }
-  },
-  methods: {
+
+    return {
+      prompt,
+      outputs,
+      generateText
+    }
+  }
+}
+
+
+  /*methods: {
     handleFileUpload() {
       const input = this.$refs.fileInput;
       const file = input.files[0];
@@ -93,44 +117,8 @@ export default {
             console.error(error);
           });
     },
-  },
-  computed: {
-    generatedTextArray() {
-      if (!this.outputs) return []
-      return this.outputs.split('')
-    },
-  },
-  components: {
-    'file-upload': VueFileUpload
-  },
-  setup() {
-    const prompt = ref("")
-    const outputs = ref("")
+  },*/
 
-    async function generateText() {
-      const response = await fetch('https://api.openai.com/v1/engines/text-davinci-002/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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'
-        },
-        body: JSON.stringify({
-          prompt: prompt.value,
-          max_tokens: 100,
-          temperature: 0.5
-        })
-      })
-      const json = await response.json();
-      this.outputs = json.choices[0].text;
-    }
-
-    return {
-      prompt,
-      outputs,
-      generateText
-    }
-  }
-}
 </script>
 <style>
 .writing-enter-active, .writing-leave-active {
